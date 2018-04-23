@@ -31,8 +31,8 @@ public class Main {
         train.info();
 
         //Treinstation Vliss souberg
-        Mens uitgestapte = (Mens) train.uitstappen("geff");
-        Mens uitgestapte = (Mens) train.uitstappen("andries");
+        uitgestapte = (Mens) train.uitstappen("geff");
+        uitgestapte = (Mens) train.uitstappen("andries");
         train.info();
 
         //Treinstation Vliss
