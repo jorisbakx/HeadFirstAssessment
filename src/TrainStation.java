@@ -10,7 +10,8 @@ public class TrainStation {
     }
 
     private void leegTrain(Train train){
-        for(String name : train.getNames()){
+
+        for (String name : train.getNames()){
             Nameable uitgestapte = train.uitstappen(name);
             perron.push(uitgestapte);
         }

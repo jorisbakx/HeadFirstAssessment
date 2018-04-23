@@ -36,6 +36,8 @@ public class Main {
         train.info();
 
         //Treinstation Vliss
+        TrainStation vlissingen = new TrainStation();
+        vlissingen.rijdtBinnen(train);
 
 
     }
