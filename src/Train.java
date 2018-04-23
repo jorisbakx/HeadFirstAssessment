@@ -4,17 +4,25 @@ import java.util.Map;
 
 public class Train {
 
-    private HashMap<String, Nameable> stoelen = new LinkedHashMap<String, Namealbe>();
+    private HashMap<String, Nameable> stoelen = new LinkedHashMap<String, Nameable>();
 
-    public void instappen(Nameable nameable1, Nameable nameable2, Nameable nameable3){
+    public void instappen(Nameable nameable1, Nameable nameable2, Nameable nameable3, Nameable nameable4, Nameable nameable5, Nameable nameable6, Nameable nameable7, Nameable nameable8, Nameable nameable9, Nameable nameable10){
         instappen(nameable1);
         instappen(nameable2);
         instappen(nameable3);
+        instappen(nameable4);
+        instappen(nameable5);
+        instappen(nameable6);
+        instappen(nameable7);
+        instappen(nameable8);
+        instappen(nameable9);
+        instappen(nameable10);
+
     }
 
     public void instappen(Nameable nameable){
         String key = nameable.getName();
-        Namealbe value = nameable;
+        Nameable value = nameable;
         this.stoelen.put(key, value);
         showInfo(nameable, " is ingestapt");
     }
