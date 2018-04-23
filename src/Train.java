@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Train implements Nameable {
+public class Train {
 
     private HashMap<String, Nameable> stoelen = new LinkedHashMap<String, Namealbe>();
 
