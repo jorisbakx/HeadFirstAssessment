@@ -1,64 +1,57 @@
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class Train {
 
-    private HashMap<String, Nameable> stoelen = new LinkedHashMap<String, Nameable>();
+    private HashMap<String, Persoon> chairs = new HashMap<>();
 
-    public void instappen(Nameable nameable1, Nameable nameable2, Nameable nameable3, Nameable nameable4, Nameable nameable5, Nameable nameable6, Nameable nameable7, Nameable nameable8, Nameable nameable9, Nameable nameable10){
-        instappen(nameable1);
-        instappen(nameable2);
-        instappen(nameable3);
-        instappen(nameable4);
-        instappen(nameable5);
-        instappen(nameable6);
-        instappen(nameable7);
-        instappen(nameable8);
-        instappen(nameable9);
-        instappen(nameable10);
-
+    public void instappen(Persoon persoon) {
+        String key = persoon.getName();
+        Persoon value = persoon;
+        this.chairs.put(key, value);
+        showInstappenInfo(persoon, " is ingestapt");
     }
 
-    public void instappen(Nameable nameable){
-        String key = nameable.getName();
-        Nameable value = nameable;
-        this.stoelen.put(key, value);
-        showInfo(nameable, " is ingestapt");
-    }
-
-    private int getCount(){
-        return stoelen.size();
-    }
-
-    private void showInfo(Nameable uitgestapte, String actie){
-        System.out.println(uitgestapte.getName() + actie);
-    }
-
-    public Nameable uitstappen(String name){
-        if (!stoelen.containsKey(name)){
-            System.out.println(name + " zit niet in de trein.");
-            return null;
+    public Persoon uitstappen(String name) {
+        if (!chairs.containsKey(name)) {
+            System.out.println(name + " zit niet in de trein");
         }
-        Nameable uitgestapte = stoelen.get(name);
-        stoelen.remove(name);
-        showInfo(uitgestapte, " is uitgestapt.");
-        return uitgestapte;
+        Persoon getOutPersoon = chairs.get(name);
+        chairs.remove(name);
+        showUitstappenInfo(getOutPersoon, " is uitgestapt");
+        return getOutPersoon;
     }
 
-    public String toString(){
-        return "Er zitten "+getCount()+" mensen in de bus.";
+    // TODO maak ticket mooier
+    private void showInstappenInfo(Persoon persoon, String action) {
+        System.out.println( persoon.getName() + action + ", " +
+                "Ticket gekocht: " + persoon.getTicket() + ", " +
+                persoon.getClasss() + "e klas" + ", " +
+                "Eindbestemming: " + persoon.getDestination());
     }
 
-    public void info(){
+    private void showUitstappenInfo(Persoon persoon, String action) {
+        System.out.println(persoon.getName() + action);
+    }
+
+    private int getCount() {
+        return chairs.size();
+    }
+
+    public void info() {
         System.out.println(this);
     }
 
-    public void printNames(){
-        System.out.println("Deze mensen zitten in de trein:");
-        for(Map.Entry<String, Nameable> entry : stoelen.entrySet()){
-            String key = entry.getKey();
-            System.out.println("- "+key);
+    public String[] getNames() {
+        String[] names = new String[getCount()];
+        int i = 0;
+        for (String key : chairs.keySet()) {
+            names[i] = key;
+            i++;
         }
+        return names;
+    }
+
+    public String toString() {
+        return "Er zitten " + getCount() + " passagiers in de trein";
     }
 }

@@ -1,26 +1,26 @@
 import java.util.Stack;
-import javax.naming.Name;
 
 public class TrainStation {
-    private Stack<Nameable> perron = new Stack<Nameable>();
 
-    public void rijdtBinnen(Train train){
-        leegTrain(train);
-        vulTrain(train);
+    private Stack<Persoon> perron = new Stack<Persoon>();
+
+    public void rijdtBinnen(Train train) {
+        leegBus(train);
+        vulBus(train);
     }
 
-    private void leegTrain(Train train){
-
-        for (String name : train.getNames()){
-            Nameable uitgestapte = train.uitstappen(name);
+    // TODO zorg dat niet iedereen uitstapt
+    private void leegBus(Train train) {
+        for(String name : train.getNames()) {
+            Persoon uitgestapte = train.uitstappen(name);
             perron.push(uitgestapte);
         }
     }
 
-    private void vulTrain(Train train){
+    private void vulBus(Train train) {
         while(!perron.isEmpty()){
-            Nameable opgestapelde = perron.pop();
-            train.instappen(opgestapelde);
+            Persoon stacked = perron.pop();
+            train.instappen(stacked);
         }
     }
 }
